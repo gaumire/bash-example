@@ -1,5 +1,9 @@
 #!/bin/bash
-
+####
+##  This is where you would download all the libraries, packages everything
+##  required to build a working docker image
+##  This is also the place where you may actually stat an app or run tests
+###
 set -eo pipefail
 
 echo "--- :package: Build job checkout directory"
@@ -32,3 +36,5 @@ function inline_image {
 }
 
 inline_image 'artifact://artifacts/image.gif' 'Rainbows'
+
+echo "All tests passed! Yay!!"
