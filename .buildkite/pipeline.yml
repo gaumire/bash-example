@@ -1,17 +1,24 @@
+---
 steps:
-  # - label: ":hammer: env vars"
-  #   command: env
-  # - label: ":docker:"
+  - label: "Running a simple command"
+    command: env
+  - label: "Running a simple bash script"
+    command: "$PWD/ci/scripts/run_tests.sh"
+  # - label: "Running a :buildkite: :docker: build"
   #   command: "/app/ci/scripts/run_tests.sh"
-  #   # uncomment below to use buildkite and docker natively
   #   env:
   #     BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
   #   artifact_paths: "artifacts/*"
-  # - wait
+  - wait
   # - label: ":buildkite:"
   #   command: "$PWD/ci/scripts/build.sh"
   # - wait
+  - label: "Running a :buildkite: build using :docker: plugin"
+    command: /app/ci/scripts/run_tests.sh
+    plugins:
+      myplugin#v1.0.0:
+        image: "ubuntu"
+        workdir: /app
+  # - wait
   # - label: ":pipeline: trigger just-another-pipelines"
   #   trigger: "just-another-pipeline"
-  - label: ":hammer:"
-    command: cat /var/log/cloud-init-output.log
