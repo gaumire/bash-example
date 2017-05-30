@@ -16,7 +16,7 @@ steps:
   - label: "Running a :buildkite: build using :docker: plugin"
     command: /app/ci/scripts/run_tests.sh
     plugins:
-      myplugin#v1.0.0:
+      https://github.com/gaumire/buildkite-plugin-test#v1.0.1:
         image: "ubuntu"
         workdir: /app
   # - wait
